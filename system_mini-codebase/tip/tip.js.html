@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>system_mini-nas</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>  
+    <div class="file-manager">
+        <div class="path-bar">
+            <span id="current-path">/<a href="" title="由于系统和软件的限制，你无法访问此目录">opt</a>/<a href="" title="由于系统和软件的限制，你无法访问此目录">nas</a>/<a href="" title="由于系统和软件的限制，你无法访问此目录">linuxserver</a>/<a href="" title="由于系统和软件的限制，你无法访问此目录">system_mini-nas</a>/<a href="../../index.html">root</a>/<a href="../system_mini-codebase.html">system_mini-codebase</a>/<a href="tip.html">tip</a>/<a href="tip.css.html">tip.css</a></span>
+        </div>
+        <div class="file-list">
+            <pre>
+                <code>
+let currentTop = 70;
+const promptBoxes = [];
+function showPrompt(message, isSuccess) {
+    const promptBox = document.createElement('div');
+    promptBox.className = 'prompt-box' + (isSuccess ? '' : ' error');
+    promptBox.style.top = currentTop + 'px';
+    promptBox.innerHTML = `
+        &lt;span&gt;${message}&lt;/span&gt;
+    `;
+    document.body.appendChild(promptBox);
+    promptBoxes.push(promptBox);
+    currentTop += 70;
+    setTimeout(() => {
+        promptBox.classList.add('show');
+    }, 10);
+    setTimeout(() => {
+        closePrompt({ currentTarget: promptBox });
+    }, 3000);
+}
+function closePrompt(event) {
+    const promptBox = event.currentTarget;
+    const index = promptBoxes.indexOf(promptBox);
+    if (index !== -1) {
+        promptBoxes.splice(index, 1);
+        currentTop -= 70;
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                promptBox.classList.remove('show');
+                promptBox.addEventListener('transitionend', () => {
+                    promptBox.remove();
+                    adjustPositions();
+                }, { once: true });
+            });
+        });
+    }
+}
+function adjustPositions() {
+    promptBoxes.forEach((box, index) => {
+        box.style.top = 70 + index * 70 + 'px';
+    });
+}
+                </code>
+            </pre>
+        </div>
+    </div>
+</body>
+</html>
