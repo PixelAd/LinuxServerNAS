@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>system_mini-nas</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="file-manager">
+        <div class="path-bar">
+            <span id="current-path">/<a href="" title="由于系统和软件的限制，你无法访问此目录">opt</a>/<a href=""title="由于系统和软件的限制，你无法访问此目录">nas</a>/<a href="" title="由于系统和软件的限制，你无法访问此目录">linuxserver</a>/<ahref="" title="由于系统和软件的限制，你无法访问此目录">system_mini-nas</a>/<a href="../index.html">root</a>/<a href="system_mini-codebase.html">system_mini-codebase</a>/<a href="Multifunctional-Search-Engine.html">Multifunctional-Search-Engine.html</a></span>
+        </div>
+        <div class="file-list">
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;多功能搜索引擎[Multifunctional Search Engine]&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: rgba(144, 238, 144, .2);
+        }
+        .search-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .search-box {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-engine-button {
+            width: 50%; /* Adjusted width for two buttons per row */
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        fieldset {
+            border: 3px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto;
+        }
+        legend {
+            padding: 0 10px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+        .search-engine-button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .search-engine-button-container a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 50%; /* Adjusted width for two buttons per row */
+        }
+        .search-engine-button-container a:hover {
+            background-color: #0056b3;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h3&gt;多功能搜索引擎&lt;br&gt;Multifunctional Search Engine&lt;/h3&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;搜索引擎[Search engine]&lt;/legend&gt;
+        &lt;div class=&quot;search-container&quot;&gt;
+            &lt;input class=&quot;search-box&quot; placeholder=&quot;输入搜索内容[Enter search content]&quot;&gt;
+            &lt;div class=&quot;search-engine-button-container&quot;&gt;
+                &lt;button class=&quot;search-engine-button&quot; onclick=&quot;searchEngine('bing')&quot;&gt;Bing&lt;/button&gt;
+                &lt;button class=&quot;search-engine-button&quot; onclick=&quot;searchEngine('baidu')&quot;&gt;Baidu&lt;/button&gt;
+                &lt;button class=&quot;search-engine-button&quot; onclick=&quot;searchEngine('google')&quot;&gt;Google&lt;/button&gt;
+                &lt;button class=&quot;search-engine-button&quot; onclick=&quot;searchEngine('sogou')&quot;&gt;Sogou&lt;/button&gt;
+                &lt;button class=&quot;search-engine-button&quot; onclick=&quot;searchEngine('sm')&quot;&gt;SM&lt;/button&gt;
+                &lt;button class=&quot;search-engine-button&quot; onclick=&quot;searchEngine('github')&quot;&gt;GitHub&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;关于本页[About This Page]&lt;/legend&gt;
+        &lt;p&gt;网页作者：system_mini&lt;br&gt;Webpage Author:system_mini&lt;/p&gt;
+        &lt;p&gt;版权：©2024 system_mini&lt;br&gt;Copyright:©2024 system_mini&lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;script&gt;
+        function searchEngine(e) {
+            var n = document.querySelector(&quot;.search-box&quot;).value,
+                o = &quot;&quot;;
+            switch (e) {
+                case &quot;bing&quot;:
+                    o = &quot;https://www.bing.com/search?q=&quot; + encodeURIComponent(n);
+                    break;
+                case &quot;baidu&quot;:
+                    o = &quot;https://www.baidu.com/s?wd=&quot; + encodeURIComponent(n);
+                    break;
+                case &quot;google&quot;:
+                    o = &quot;https://www.google.com/search?q=&quot; + encodeURIComponent(n);
+                    break;
+                case &quot;sogou&quot;:
+                    o = &quot;https://www.sogou.com/web?query=&quot; + encodeURIComponent(n);
+                    break;
+                case &quot;sm&quot;:
+                    o = &quot;https://www.sm.cn/s?q=&quot; + encodeURIComponent(n);
+                    break;
+                case &quot;github&quot;:
+                    o = &quot;https://github.com/search?q=&quot; + encodeURIComponent(n);
+                    break;
+                default:
+                    return;
+            }
+            window.open(o, &quot;_blank&quot;);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+    </div>
+</body>
+
+</html>

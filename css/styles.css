@@ -1,24 +1,58 @@
+/* 定义 CSS 变量 */
+:root {
+    --font-family: Arial, sans-serif;
+    --background-color: #c4c4c4;
+    --main-bg-gradient: linear-gradient(135deg, #ffffff, #e0e0e0);
+    --path-bar-bg-gradient: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    --path-bar-hover-bg-gradient: linear-gradient(135deg, #e0e0e0, #d0d0d0);
+    --file-list-item-bg: rgba(255, 255, 255, 0.8);
+    --file-list-item-hover-bg: rgba(240, 240, 240, 0.9);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-hover-color: rgba(139, 139, 139, 0.144);
+    --link-color: #000000;
+    --link-hover-bg: rgba(240, 240, 240, 0.5);
+    --pre-bg: rgba(244, 244, 244, 0.9);
+    --line-number-color: #888;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--background-color);
+    justify-content: flex-start;
 }
 
 .file-manager {
     width: 80%;
     margin: 20px auto;
-    background: white;
+    background: var(--main-bg-gradient);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+    margin-top: 75px;
+}
+
+.file-manager:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .path-bar {
-    background: #f0f0f0;
+    background: var(--path-bar-bg-gradient);
     padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    transition: background 0.3s ease;
+}
+
+.path-bar:hover {
+    background: var(--path-bar-hover-bg-gradient);
+}
+
+.path-bar a {
+    margin-inline: 1px;
+    font-size: 15px;
 }
 
 .file-list {
@@ -30,9 +64,12 @@ body {
     display: flex;
     align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-size: 17px;
+    border-radius: 6px;
+    background: var(--file-list-item-bg);
+    margin-top: 10px;
 }
 
 .file-list li:last-child {
@@ -59,40 +96,45 @@ body {
 }
 
 .file-list li:hover {
-    background-color: #f0f0f0;
+    background-color: var(--file-list-item-hover-bg);
+    border-color: var(--border-hover-color);
 }
 
 .file-list a {
-    color: #000000;
+    color: var(--link-color);
     text-decoration: none;
     border: none !important;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 a {
-    color: #000000;
+    color: var(--link-color);
     text-decoration: none;
 }
 
 a:hover {
-    border: 1px solid #a7a7a7;
-    background-color: #f0f0f03b;
+    border: 1px solid var(--border-color);
+    background-color: var(--link-hover-bg);
     border-radius: 4px;
 }
 
-.svg{
+.svg {
     width: 26px;
     height: 26px;
-    margin-right: 6px;
+    margin-right: 10px;
 }
 
-.imgfile{
+.imgfile {
     width: 100%;
+    height: auto;
 }
 
 pre {
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    background-color: var(--pre-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     padding: 15px;
     overflow-x: auto;
     font-size: 0.9em;
@@ -119,8 +161,8 @@ pre.code-with-linenumbers code span.line::before {
     width: 2em;
     text-align: right;
     padding-right: 0.5em;
-    color: #888;
-    border-right: 1px solid #ccc;
+    color: var(--line-number-color);
+    border-right: 1px solid var(--border-color);
 }
 
 code {
